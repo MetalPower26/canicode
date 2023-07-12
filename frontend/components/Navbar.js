@@ -44,17 +44,17 @@ export default function Navbar() {
       <div className={menuDiv}>
         <div className="text-sm lg:flex-grow">
           <Link href="#responsive-header" className={navList}>
-            Docs
+            Home
           </Link>
           <Link href="#responsive-header" className={navList}>
-            Examples
+            Projects
           </Link>
           <Link href="#responsive-header" className={navList}>
-            Blog
+            Information
           </Link>
         </div>
         <div>
-          <Link href="#" className={`${isOpen ? 'inline-block' : 'hidden'} lg:inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0`}>Download</Link>
+          <Link href="#" className={`${isOpen ? 'inline-block' : 'hidden'} lg:inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0`}>Login</Link>
         </div>
       </div>
     </nav>
