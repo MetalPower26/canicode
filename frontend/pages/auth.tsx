@@ -9,27 +9,29 @@ export default function Login() {
     const auth = firebase.auth();
     const GoogleAuthProvider = new firebase.auth.GoogleAuthProvider();
     try {
-        await auth.signInWithPopup(GoogleAuthProvider);
-        console.log("Success");
+      const result = await auth.signInWithPopup(GoogleAuthProvider);
+      const user = result.user;
     } catch (err) {
-        Error("Failed to log in");
+      Error("Failed to log in");
     }
   };
   
   return (
-    <main className="flex min-h-screen flex-col items-center">
-      <Navbar />
-      <div className="flex flex-col items-center justify-center h-screen">
-        <h2 className="text-2xl font-bold mb-4">Sign in with Google</h2>
-        <button onClick={ signInWithGoogle } className="flex items-center px-4 py-2 bg-red-600 text-white rounded-md shadow-md hover:bg-red-700">
+    <main className="flex h-screen flex-col items-center justify-center">
+      <div className="flex flex-col items-center justify-center h-4/5 bg-neutral-50 border border-neutral-300 rounded p-8">
+        <h2 className="text-3xl font-bold mb-6">Sign in with Google</h2>
+        <button
+          onClick={ signInWithGoogle }
+          className="flex items-center px-6 py-3 bg-red-600 text-white font-semibold rounded-md shadow-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 transition-colors"
+        >
           <Image
             src="/google-logo.png"
             alt="Google Logo"
             width={20}
             height={20}
-            className="mr-2"
+            className="mr-3"
           />
-          Sign in with Google
+          <span>Sign in with Google</span>
         </button>
       </div>
     </main>
