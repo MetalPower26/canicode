@@ -5,7 +5,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 // isAuthenticated returns a boolean value to check if the user is logged in or not
 
 const isAuthenticated = () => {
-  const [user, loading, error] = useAuthState(auth);
+  const user = auth.currentUser;
   return user !== null;
 }
 
@@ -13,7 +13,7 @@ const isAuthenticated = () => {
 // Please always use isAuthenticated first to check, or remember to handle null
 
 const getUser = () => {
-  const [user, loading, error] = useAuthState(auth);
+  const user = auth.currentUser;
   return user;
 }
 
