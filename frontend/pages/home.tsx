@@ -1,3 +1,4 @@
+import { getUser, isAuthenticated } from '@/users/users';
 import Navbar from '../components/Navbar';
 
 export default function Home() {
