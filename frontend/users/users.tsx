@@ -1,6 +1,5 @@
 import { app, auth } from "@/firebase/firebase";
 import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
-import { useAuthState } from 'react-firebase-hooks/auth';
 
 // isAuthenticated returns a boolean value to check if the user is logged in or not
 
