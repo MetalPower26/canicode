@@ -1,5 +1,5 @@
 // Import the functions you need from the SDKs you need
-import firebase from "firebase/app";
+import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
@@ -21,7 +21,7 @@ const firebaseConfig = {
 console.log(process.env.NEXT_PUBLIC_FIREBASE_API_KEY);
 
 // Initialize Firebase
-const app = firebase.initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
