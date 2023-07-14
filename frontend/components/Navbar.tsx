@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Link from "next/link";
+import UserButton from "./UserButton";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -54,7 +55,9 @@ export default function Navbar() {
           </Link>
         </div>
         <div>
-          <Link href="#" className={`${isOpen ? 'inline-block' : 'hidden'} lg:inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0`}>Login</Link>
+          <div className={`${isOpen ? 'inline-block' : 'hidden'} lg:inline-block`}>
+            <UserButton />
+          </div>
         </div>
       </div>
     </nav>
