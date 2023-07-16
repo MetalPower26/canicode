@@ -1,5 +1,15 @@
 import { db } from '@/firebase/firebase';
-import { collection, doc, query, where, getDocs } from 'firebase/firestore';
+import { collection, doc, query, where, getDoc, getDocs } from 'firebase/firestore';
+
+async function getProject(uid){
+  const docSnapshot = await getDoc(doc(db, "projects", uid));
+  if(docSnapshot.exists()){
+    console.log("Found data ", docSnapshot.data());
+    return docSnapshot.data();
+  }else{
+    console.error("Data not found ", uid);
+  }
+}
 
 async function getUserProjects(user){
   const q = query(collection(db, "projects"), where("user", "==", user));
@@ -25,3 +35,5 @@ async function getProjectList(){
   console.log(res);
   return res;
 }
+
+export { getProject, getProjectList, getUserProjects }

@@ -8,8 +8,6 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 export default function UserButton() {
   const [user, loading, error] = useAuthState(auth);
 
-  // componentDidMount for functional React
-
   const handleSignInClick = async () => {
     const user = await GoogleSignIn();
     console.log(user);
