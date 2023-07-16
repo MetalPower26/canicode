@@ -45,10 +45,10 @@ export default function Navbar() {
       </div>
       <div className={menuDiv}>
         <div className="text-sm lg:flex-grow">
-          <Link href="#responsive-header" className={navList}>
+          <Link href="/" className={navList}>
             Home
           </Link>
-          <Link href="#responsive-header" className={navList}>
+          <Link href="/projects" className={navList}>
             Projects
           </Link>
           <Link href="#responsive-header" className={navList}>
