@@ -7,7 +7,7 @@ export default function Detail() {
     <main className="flex min-h-screen flex-col items-center">
       <Navbar />
       <div className="mt-5">
-        <h1 className="text-2xl"> Detail : {router.query.slug} </h1>
+        <h1 className="text-2xl"> Detail : {router.query.id} </h1>
       </div>
     </main>
   )
