@@ -10,5 +10,18 @@ async function getUserProjects(user){
     res[doc.id] = doc.data();
   });
 
+  console.log(res);
+  return res;
+}
+
+async function getProjectList(){
+  const querySnapshot = await getDocs(query(collection(db, "projects")));
+  const res = {};
+
+  querySnapshot.forEach((doc) => {
+    res[doc.id] = doc.data();
+  });
+
+  console.log(res);
   return res;
 }
