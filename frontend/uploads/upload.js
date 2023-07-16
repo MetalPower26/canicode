@@ -3,7 +3,7 @@ import { doc, setDoc, deleteDoc } from 'firebase/firestore';
 
 // validates the data created to a collection if it exists
 
-function emptyOrNotString(param: any){
+function emptyOrNotString(param){
   if (typeof param != 'string' || param === "") {
     return true;
   } else {
@@ -11,7 +11,7 @@ function emptyOrNotString(param: any){
   }
 }
 
-function validate(data : any){
+function validate(data){
   if (emptyOrNotString(data.title)) {
     return false;
   }
@@ -27,7 +27,7 @@ function validate(data : any){
 // Creates a new project if it doesn't exist
 // Edit the project if it exists
 
-async function setProject(uid: string, data: any) {
+async function setProject(uid, data) {
   if (!validate(data)) {
     console.error("Data misfigured");
     return;
@@ -40,7 +40,7 @@ async function setProject(uid: string, data: any) {
   }
 }
 
-async function deleteProject(uid: string){
+async function deleteProject(uid){
   await deleteDoc(doc(db, "projects", uid));
 }
 
