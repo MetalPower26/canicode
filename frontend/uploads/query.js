@@ -6,4 +6,9 @@ async function getUserProjects(user){
   const querySnapshot = await getDocs(q);
   const res = {};
 
+  querySnapshot.forEach((doc) => {
+    res[doc.id] = doc.data();
+  });
+
+  return res;
 }
