@@ -5,6 +5,7 @@ import { setProject } from '@/uploads/upload';
 import ReactMarkdown from 'react-markdown';
 import { auth } from '@/firebase/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import 'github-markdown-css'
 
 // editForm gets a uid parameter, showing the uid of the project
 // Project has values
@@ -26,7 +27,7 @@ const contentValidation = {
   required: { value: true, message: "Content cannot be empty"}
 };
 
-function editForm({ uid }){
+function EditForm({ uid }){
   const { register, handleSubmit, watch, reset, formState: { errors }} = useForm();
 
   useEffect(async () => {
@@ -67,12 +68,12 @@ function editForm({ uid }){
         <input {...register("user")} hidden />
         <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">Submit</button>
       </form>
-      <ReactMarkdown>{watchContent}</ReactMarkdown>
+      <ReactMarkdown className="markdown-body">{watchContent}</ReactMarkdown>
     </div>
   );
 }
 
-function createForm(){
+function CreateForm(){
   const { register, handleSubmit, watch, reset, formState: { errors }} = useForm();
   const [user, loading, error] = useAuthState(auth);
 
@@ -94,7 +95,7 @@ function createForm(){
   const watchContent = watch("content");
 
   return (
-    <div class="max-w-md mx-auto bg-white p-8 border border-gray-300 shadow-md rounded-md">
+    <div class="w-full mx-auto bg-white p-8 border border-gray-300 shadow-md rounded-md">
       <h2 class="text-2xl font-bold mb-4">Create New Project</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div class="mb-4">
@@ -107,13 +108,14 @@ function createForm(){
         </div>
         <div class="mb-4">
           <label for="content" class="block text-gray-700 font-bold mb-2">Content</label>
-          <input {...register("content", contentValidation)} class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" />
+          <textarea {...register("content", contentValidation)} class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" />
         </div>
         <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">Submit</button>
       </form>
-      <ReactMarkdown>{watchContent}</ReactMarkdown>
+      <ReactMarkdown className="markdown-body">{watchContent}</ReactMarkdown>
+      <ReactMarkdown># A</ReactMarkdown>
     </div>
   );
 }
 
-export { editForm, createForm }
+export { EditForm, CreateForm }
