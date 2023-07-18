@@ -13,12 +13,15 @@ function emptyOrNotString(param){
 
 function validate(data){
   if (emptyOrNotString(data.title)) {
+    console.error("Title is empty");
     return false;
   }
   if (emptyOrNotString(data.content)) {
+    console.error("Content is empty");
     return false;
   }
   if (emptyOrNotString(data.user)) {
+    console.error("User is empty");
     return false;
   }
   return true;
@@ -28,6 +31,7 @@ function validate(data){
 // Edit the project if it exists
 
 async function setProject(uid, data) {
+  console.log("Contents of data := ", data);
   if (!validate(data)) {
     console.error("Data misfigured");
     return;
