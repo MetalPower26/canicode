@@ -14,10 +14,12 @@ async function getProject(uid){
 async function getUserProjects(user){
   const q = query(collection(db, "projects"), where("user", "==", user));
   const querySnapshot = await getDocs(q);
-  const res = {};
+  const res = [];
 
   querySnapshot.forEach((doc) => {
-    res[doc.id] = doc.data();
+    let data = doc.data();
+    data["uid"] = doc.id;
+    res.push(data);
   });
 
   console.log(res);
@@ -26,10 +28,12 @@ async function getUserProjects(user){
 
 async function getProjectList(){
   const querySnapshot = await getDocs(query(collection(db, "projects")));
-  const res = {};
+  const res = [];
 
   querySnapshot.forEach((doc) => {
-    res[doc.id] = doc.data();
+    let data = doc.data();
+    data["uid"] = doc.id;
+    res.push(data);
   });
 
   console.log(res);
