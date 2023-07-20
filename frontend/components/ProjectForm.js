@@ -44,9 +44,13 @@ const errorMessageRender = ({ messages }) =>
 function EditForm({ uid }){
   const { register, handleSubmit, watch, reset, formState: { errors }} = useForm();
 
-  useEffect(async () => {
+  useEffect(() => {
     // edit an old project
-    data = await getProject(uid);
+    var data;
+    const getOldProject = async () => {
+      data = await getProject(uid);
+    }
+    getOldProject();
     defaultValues = {};
     defaultValues["title"] = data.title;
     defaultValues["content"] = data.content;
