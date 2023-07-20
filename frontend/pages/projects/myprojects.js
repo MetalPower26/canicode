@@ -8,7 +8,7 @@ import Link from 'next/link';
 export default function MyProjects(){
 
   const [user, loading, error] = useAuthState(auth);
-  const [list, setList] = useState([]);
+  const [list, setList] = useState({});
 
   useEffect(() => {
     if(!loading && user !== null){
@@ -17,7 +17,7 @@ export default function MyProjects(){
       }
       getProjects();
     }
-  }, [user]);
+  }, [user, loading]);
 
   if (loading || user === null) {
     return (
@@ -37,8 +37,8 @@ export default function MyProjects(){
         <div className="mt-5 p-6 w-full">
           <ul className="list-disc">
             {
-              list.map((entry) => 
-                <li><Link href={`detail/${entry.uid}`}>{entry.uid}</Link></li>
+              list.map((uid, entry) => 
+                <li key={uid}><Link href={`detail/${uid}`}>{uid}</Link></li>
               )
             }
           </ul>

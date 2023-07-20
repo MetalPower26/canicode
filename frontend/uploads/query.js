@@ -28,12 +28,11 @@ async function getUserProjects(user){
 
 async function getProjectList(){
   const querySnapshot = await getDocs(query(collection(db, "projects")));
-  const res = [];
+  const res = {};
 
   querySnapshot.forEach((doc) => {
     let data = doc.data();
-    data["uid"] = doc.id;
-    res.push(data);
+    res["uid"] = data;
   });
 
   console.log(res);
