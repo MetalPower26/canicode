@@ -15,7 +15,7 @@ import 'github-markdown-css'
 const uidValidation = {
   required: { value: true, message: "Unique ID is required"},
   maxLength: { value: 20, message: "Unique ID has a maximum of 20 characters"},
-  pattern: { value: /[a-zA-Z0-9]+(-[a-zA-Z0-9]+)+/, message: "Unique ID must contain only alphanumeric characters or hyphen as a connector (Incorrect examples : \"-a\" or \"ab--cd\")"}
+  pattern: { value: /[a-zA-Z0-9]+(-[a-zA-Z0-9]+)*/, message: "Unique ID must contain only alphanumeric characters or hyphen as a connector (Incorrect examples : \"-a\" or \"ab--cd\")"}
 };
 
 const titleValidation = {
